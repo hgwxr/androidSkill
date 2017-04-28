@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">androidSkill</string>
+    <array name="types">
+        <item>列表</item>
+        <item>动画</item>
+        <item>弹窗</item>
+        <item>待开发</item>
+        <item>待开发</item>
+        <item>待开发</item>
+        <item>待开发</item>
+    </array>
+</resources>
