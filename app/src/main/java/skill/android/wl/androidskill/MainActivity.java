@@ -3,18 +3,19 @@ package skill.android.wl.androidskill;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import skill.android.wl.androidskill.adapter.ViewPagerFragmentAdapter;
+import skill.android.wl.androidskill.inject.component.ActivityComponent;
+import skill.android.wl.androidskill.inject.component.DaggerActivityComponent;
+import skill.android.wl.androidskill.inject.model.ActivityModel;
 import skill.android.wl.androidskill.mvp.presenter.MainPresenter;
 import skill.android.wl.androidskill.mvp.view.ui.BaseActivity;
 import skill.android.wl.androidskill.mvp.view.ui.fragment.TypeFragment;
@@ -59,12 +60,13 @@ public class MainActivity extends BaseActivity<MainPresenter> {
         mFragments.add( TypeFragment.newInstance("Type3",-1));
         mFragments.add( TypeFragment.newInstance("Type4",-1));
         mFragments.add( TypeFragment.newInstance("Type5",-1));
-
     }
-
     @Override
-    protected MainPresenter initPresenter() {
-        return new MainPresenter();
+    protected void initPresenter(ActivityComponent build) {
+        build.inject(this);
+//        DaggerActivityComponent.builder().activityModel(new ActivityModel()).apiServiceComponent(App.getApp().getApiServiceComponent()).build().inject(this);
+//        DaggerApiServiceComponent.builder().apiServiceModel(new ApiServiceModel()).appModel(new AppModel(App.getApp())).build().inject(this);
+//        DaggerActivityComponent.builder().activityModel(new ActivityModel())
     }
 
     @Override
