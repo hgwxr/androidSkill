@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="40dp"
+        android:layout_height="match_parent">
+        <ImageView
+            android:src="@mipmap/dqzt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    <View
+         android:background="@color/colorAccent"
+         android:layout_width="1dp"
+         android:layout_gravity="center"
+         android:layout_height="match_parent"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title"
+            android:text="收货信息:"
+            android:textColor="#000"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:id="@+id/time_stmap"
+            android:text="2017-04-28 18:29"
+            android:textSize="12sp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+        <TextView
+            android:layout_below="@+id/title"
+            android:layout_marginTop="2dp"
+            android:id="@+id/content"
+            android:textSize="12sp"
+            android:text="\tQQ:4354354353\n手机:183822344324\n快手:2334654\n\tYY:asdfsa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

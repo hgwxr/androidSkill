@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<in.srain.cube.views.ptr.PtrClassicDefaultHeader
+    android:id="@+id/ptr"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tool="http://schemas.android.com/tools"
+    >
+<android.support.v4.widget.NestedScrollView
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <skill.android.wl.androidskill.widget.PathMeasure1
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
             <TextView
                 android:id="@+id/tv"
                 android:gravity="center"
@@ -18,3 +28,4 @@
                 android:layout_height="1000dp" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
+    </in.srain.cube.views.ptr.PtrClassicDefaultHeader>

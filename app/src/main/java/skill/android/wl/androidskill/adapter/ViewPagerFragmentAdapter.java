@@ -49,6 +49,8 @@ public class ViewPagerFragmentAdapter extends FragmentStatePagerAdapter {
             TypeFragment typeFragment=null;
             if ("待开发".equals(mTitles.get(position))) {
                typeFragment = TypeFragment.newInstance(mTitles.get(position), R.layout.fragment_type1);
+            }else if ("弹窗".equals(mTitles.get(position))){
+                typeFragment = TypeFragment.newInstance(mTitles.get(position), R.layout.fragment_type_alert);
             }else{
                 typeFragment = TypeFragment.newInstance(mTitles.get(position), R.layout.fragment_type);
             }

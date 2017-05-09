@@ -16,6 +16,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+        }
+    }
+    productFlavors{
+        umeng{  }
+        wandoujai {  }
+        yingyongbao{  }
     }
 }
 def libs = rootProject.ext.libraries;
@@ -24,7 +32,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
 
     /* compile 'com.google.dagger:dagger:2.10'
    compile 'com.google.dagger:dagger-compiler:2.10'*/
@@ -44,8 +51,12 @@ dependencies {
     compile "com.android.support:design:${libs.design}"
     //开源
     //侧滑删除
+
+
     compile 'com.facebook.stetho:stetho:1.4.2'
     compile 'com.facebook.stetho:stetho-okhttp3:1.4.2'
     compile 'com.android.support:appcompat-v7:25.3.1'
-
+    compile 'com.android.support.constraint:constraint-layout:1.0.1'
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
+    testCompile 'junit:junit:4.12'
 }

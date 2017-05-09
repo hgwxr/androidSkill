@@ -1,0 +1,17 @@
+<resources>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="BaseAppTheme" parent="AppTheme.Base">
+        <item name="colorPrimary">@android:color/transparent</item>    <!-- 状态栏 -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> <!-- toolbar -->
+        <item name="colorAccent">@color/colorAccent</item>  <!-- 重点 -->
+    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="BaseAppTheme"/>
+    <!-- Base application theme. -->
+
+
+</resources>

@@ -1,5 +1,6 @@
 package skill.android.wl.androidskill.mvp.view.ui.fragment;
 
+import android.app.Activity;
 import android.view.View;
 
 /**
@@ -11,6 +12,16 @@ import android.view.View;
 
 public abstract class BaseDeal {
     protected View view;
+    protected Activity activity;
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
     public  void attach(View view){
         this.view=view;
     }

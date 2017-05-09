@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/androidSkill.iml" filepath="$PROJECT_DIR$/androidSkill.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/behavior/behavior.iml" filepath="$PROJECT_DIR$/behavior/behavior.iml" />
+      <module fileurl="file://$PROJECT_DIR$/statusbar/statusbar.iml" filepath="$PROJECT_DIR$/statusbar/statusbar.iml" />
     </modules>
   </component>
 </project>

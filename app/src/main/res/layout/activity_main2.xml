@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<in.srain.cube.views.ptr.PtrFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:ptr_resistance="1.7"
+    android:id="@+id/ptr"
+    app:ptr_ratio_of_header_height_to_refresh="1.2"
+    app:ptr_duration_to_close="200"
+    app:ptr_duration_to_close_header="300"
+    app:ptr_keep_header_when_refresh="true"
+    app:ptr_pull_to_fresh="false"
+    >
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+<LinearLayout
+    android:id="@+id/root_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/head_image"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        />
+        <skill.android.wl.androidskill.widget.TimeLineView
+            android:visibility="gone"
+            android:id="@+id/timeLineView1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:preStringColor="#00ff00"
+            app:radius="10dp"
+            app:lineWidth="5dp"
+            app:startedStringColor="#ff0000"/>
+        <skill.android.wl.androidskill.widget.TimeLineView
+            android:visibility="gone"
+            android:rotation="90"
+            android:id="@+id/timeLineView2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:preCircleColor="#2200dd"
+            app:startedCircleColor="#DD3333"
+            app:textSize="40sp"/>
+    </LinearLayout>
+    </ScrollView>
+</in.srain.cube.views.ptr.PtrFrameLayout>
+<!--<GridLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="1">
+    <include layout="@layout/time_progress_item"/>
+    <include layout="@layout/time_progress_item"/>
+    <include layout="@layout/time_progress_item"/>
+</GridLayout>-->
+
+<!--
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+           app:layout_scrollFlags="scroll"
+           android:id="@+id/head_image"
+           android:src="@mipmap/ic_launcher"
+           android:layout_width="match_parent"
+           android:layout_height="300dp"
+        />
+    <TextView
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:layout_width="match_parent"
+        android:text="这是TAB"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:layout_height="30dp" />
+</android.support.design.widget.AppBarLayout>
+    <android.support.v4.widget.NestedScrollView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1000dp">
+        <TextView
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:text="center"
+            android:gravity="center"
+            />
+        </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
+</in.srain.cube.views.ptr.PtrClassicDefaultHeader>-->

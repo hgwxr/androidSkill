@@ -3,6 +3,7 @@ package skill.android.wl.androidskill;
 import android.app.Application;
 import android.content.Context;
 
+import skill.android.wl.androidskill.exception.DealException;
 import skill.android.wl.androidskill.inject.component.ApiServiceComponent;
 import skill.android.wl.androidskill.inject.component.DaggerApiServiceComponent;
 import skill.android.wl.androidskill.inject.model.ApiServiceModel;
@@ -22,6 +23,8 @@ public class App extends Application {
     public void onCreate() {
         mContex=this;
         super.onCreate();
+        DealException crashHandler = DealException.getInstance();
+        crashHandler.init(getApplicationContext());
         apiServiceComponent = DaggerApiServiceComponent.builder().apiServiceModel(new ApiServiceModel()).build();
 
     }

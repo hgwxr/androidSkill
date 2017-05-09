@@ -74,13 +74,20 @@ public class TypeFragment extends Fragment {
         switch (layoutType) {
             case R.layout.fragment_type:
                 deal = new LayoutTypeDeal();
-                deal.attach(view);
+                LayoutTypeDeal deal = (LayoutTypeDeal) this.deal;
+                deal.setContext(getContext());
+                this.deal.attach(view);
                 break;
             case R.layout.fragment_type1:
-                deal = new LayoutType1Deal();
-                deal.attach(view);
+                this.deal = new LayoutType1Deal();
+                this.deal.attach(view);
+                break;
+            case R.layout.fragment_type_alert:
+                this.deal = new LayoutTypeAlert();
+                this.deal.attach(view);
                 break;
         }
+        deal.setActivity(getActivity());
         deal.initView();
         deal.dealView();
        /* tv=ButterKnife.findById(view,R.id.tv);
