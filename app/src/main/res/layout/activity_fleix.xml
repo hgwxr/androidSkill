@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<skill.android.wl.androidskill.widget.CustomView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <skill.android.wl.androidskill.widget.FleixViewGroup
+        android:layout_width="match_parent"
+        android:background="@color/colorAccent"
+        android:layout_height="match_parent">
+        <skill.android.wl.androidskill.widget.MyScrollview
+            android:layout_marginLeft="80dp"
+            android:background="@color/stpi_default_circle_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="match_parent">
+          <skill.android.wl.androidskill.widget.TouchEventView
+              android:layout_margin="40dp"
+              android:background="@color/colorPrimary"
+              android:layout_width="match_parent"
+              android:layout_height="1000dp" />
+        </LinearLayout>
+        </skill.android.wl.androidskill.widget.MyScrollview>
+    </skill.android.wl.androidskill.widget.FleixViewGroup>
+
+</LinearLayout>
+<!--skill.android.wl.androidskill.widget.CustomView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -25,7 +55,7 @@
         android:text="to_scrollView"
         android:textColor="@android:color/white"
         android:background="@color/colorPrimary"
-        android:textSize="30sp"/>
+        android:textSize="30sp"/>-->
    <!-- <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -55,4 +85,3 @@
                     android:textSize="30sp"/>
         </LinearLayout>
     </ScrollView>-->
-</skill.android.wl.androidskill.widget.CustomView>

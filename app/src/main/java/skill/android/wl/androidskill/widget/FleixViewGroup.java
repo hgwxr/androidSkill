@@ -1,6 +1,8 @@
 package skill.android.wl.androidskill.widget;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.os.Build;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
@@ -23,6 +25,7 @@ import android.widget.Scroller;
  */
 
 public class FleixViewGroup extends FrameLayout {
+    private static final String TAG = FleixViewGroup.class.getSimpleName();
     private int width;
     private int height;
     private Scroller scroller;
@@ -30,6 +33,9 @@ public class FleixViewGroup extends FrameLayout {
     private View childAt;
     private float distanceY;
     private ViewDragHelper viewDragHelper;
+    private boolean flagStart1;
+    private float flagStart2;
+    private Rect rect;
 
     public FleixViewGroup(@NonNull Context context) {
         super(context,null);
@@ -54,76 +60,93 @@ public class FleixViewGroup extends FrameLayout {
 
     private void init(Context context) {
         scroller = new Scroller(context);
-        viewDragHelper = ViewDragHelper.create(this, new ViewDragHelper.Callback() {
-            @Override
-            public boolean tryCaptureView(View child, int pointerId) {
-                return false;
-            }
 
-        });
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        View childAt = getChildAt(0);
+        rect = new Rect();
+        rect.set(childAt.getLeft(),childAt.getTop(),childAt.getRight(),childAt.getBottom());
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.e(TAG, "onTouchEvent: " );
+        boolean b=false;
+        if (this.getParent()!=null) {
+           b = !(this.getParent() instanceof FleixViewGroup);
+            Log.e(TAG, "requestDisallowInterceptTouchEvent: "+b );
+           requestDisallowInterceptTouchEvent(b);
+
+        }else {
+        }
+        Log.e(TAG, "onTouchEvent() called with: event = [");
         int childCount = getChildCount();
-        if (childCount >0) {
+       // if (childCount >0) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     Log.d("ACTION_DOWN)+","asda");
-
-                    //if (flagStart){
-
-                  // }
+                    distanceY=event.getRawY();
+                    flagStart2 = distanceY;
                     break;
                 case MotionEvent.ACTION_MOVE:
                    // viewDragHelper.processTouchEvent(event);
-                    //scrollBy(0,(int) (distanceY-(int) (event.getY())));
-                    scroller.startScroll (scroller.getCurrX(),scroller.getCurrY(), 0, (int) (distanceY-(int) (event.getY())));
-                    distanceY=event.getY();
-                    invalidate();
-                    Log.d("onInterceptTouchEvent", "onInterceptTouchEvent() called with: ev = ["+" "+flagStart+" "+ (int) (event.getRawY()-distanceY)+"  " + event.getRawY()+" "+event.getY()+" " + "]"+" "+ childAt.getY()+" "+childAt.getScrollY()+" "+ childAt.getHeight());
+                    int rawY = (int) (event.getRawY());
+                    scrollBy(0,(int) (distanceY- rawY));  //滑动child
+                   // scrollViewGroup();
+                   // scroller.startScroll (scroller.getCurrX(),scroller.getCurrY(), 0, (int) (distanceY-(int) (event.getY())));
+                    distanceY=rawY;
+                    //invalidate();
+//                    Log.d("onInterceptTouchEvent", "onInterceptTouchEvent() called with: ev = ["+" "+flagStart+" "+ (int) (event.getRawY()-distanceY)+"  " + event.getRawY()+" "+event.getY()+" " + "]"+" "+ childAt.getY()+" "+childAt.getScrollY()+" "+ childAt.getHeight());
 
                     break;
                 case MotionEvent.ACTION_CANCEL:
                 case MotionEvent.ACTION_UP:
                     distanceY=0;
+                    //scrollTo(rect.left,rect.top);
+                    scroller.startScroll(scroller.getCurrX(),scroller.getCurrY(),0,rect.top-scroller.getCurrY());
+                    invalidate();
+                    flagStart2=0;
                     break;
             }
-        }
-
-        return super.onTouchEvent(event);
+       // }
+        return b;
     }
 
-  @Override
-    public boolean onInterceptTouchEvent(MotionEvent event) {
+    private void scrollViewGroup() {
 
-
-        return super.onInterceptTouchEvent(event);
     }
 
     @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        int childCount = getChildCount();
-        if (childCount >0) {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    distanceY =event.getY();
-                    if (childAt==null)
-                        childAt = getChildAt(0);
-                    if (childAt.getScrollY()==0){
-                        flagStart =true;
-                        return true;
-                    }
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+    }
 
-                   // Log.d("onInterceptTouchEvent", "onInterceptTouchEvent() called with: ev = [" + event.getRawY()+" "+event.getY()+" " + "]"+" "+ childAt.getY()+" "+ childAt.getScrollY()+" "+ childAt.getHeight());
-                    break;
-                case MotionEvent.ACTION_CANCEL:
-                case MotionEvent.ACTION_UP:
-                    flagStart=false;
-                    break;
-            }
-        }
-        return super.dispatchTouchEvent(event);
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+    }
+
+    @Override
+    public void requestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        Log.e(TAG, "requestDisallowInterceptTouchEvent: "+disallowIntercept );
+            super.requestDisallowInterceptTouchEvent(disallowIntercept);
+
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        Log.e(TAG, "onInterceptTouchEvent() called with: ev =  ");
+        return super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.e(TAG, "dispatchTouchEvent: ");
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override
@@ -136,10 +159,7 @@ public class FleixViewGroup extends FrameLayout {
             //必须调用该方法，否则不一定能看到滚动效果
             postInvalidate();
         }
-     /*   if (scroller.computeScrollOffset()) {
-            scrollTo(scroller.getCurrX(), scroller.getCurrY());
-            postInvalidate();
-        }*/
+
     }
 
     @Override
